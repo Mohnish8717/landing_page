@@ -1,0 +1,133 @@
+/* ── FONTS — must be first import ── */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+  --brand: #FF4500;
+  --black: #060B18;
+  --white: #f8f9fa;
+  --grid-line: rgba(6, 11, 24, 0.08);
+}
+
+/* ── RESET ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: var(--font-display);
+  background-color: #f8f9fa;
+  color: #060B18;
+  overflow-x: hidden;
+}
+
+/* ── SELECTION ── */
+::selection {
+  background: #FF4500;
+  color: #f8f9fa;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f8f9fa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #060B18;
+}
+
+/* ── UTILITIES ── */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Neo-brutalist shadows — full press collapse */
+.shadow-neo-sm {
+  box-shadow: 4px 4px 0px 0px #060B18;
+}
+
+.shadow-neo {
+  box-shadow: 8px 8px 0px 0px #060B18;
+}
+
+.shadow-neo-lg {
+  box-shadow: 12px 12px 0px 0px #060B18;
+}
+
+.shadow-neo-white {
+  box-shadow: 8px 8px 0px 0px #f8f9fa;
+}
+
+.shadow-neo-brand {
+  box-shadow: 8px 8px 0px 0px #FF4500;
+}
+
+/* Tactile press: translate exactly = shadow offset → shadow disappears */
+.btn-press {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn-press:hover {
+  transform: translate(8px, 8px);
+  box-shadow: 0px 0px 0px 0px #060B18 !important;
+}
+
+.btn-press-white {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.btn-press-white:hover {
+  transform: translate(8px, 8px);
+  box-shadow: 0px 0px 0px 0px #f8f9fa !important;
+}
+
+/* ── MARQUEE ── */
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-left 18s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ── GRID LINES background ── */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
